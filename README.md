@@ -45,7 +45,25 @@ Other Bazzite images, kernels, firmware and Legion Go models need independent te
 
 ## 📦 Installation
 
-**Requirements:** Bazzite, [Decky Loader](https://decky.xyz) already installed, plus Node.js, pnpm 8 and Python 3 to build.
+**Requirements:** Bazzite with [Decky Loader](https://decky.xyz) already installed.
+
+### Option A: install from URL (easiest)
+
+1. In Gaming Mode open **Decky → ⚙️ Settings → General** and turn on **Developer mode**.
+2. Go to **Developer → Install plugin from URL**.
+3. Paste this link and confirm:
+
+   ```
+   https://github.com/onullusoy/legion-center-bazzite/releases/download/v0.1.1-bazzite.5/LegionCenter-0.1.1-bazzite.5.zip
+   ```
+
+4. Open **Decky → Legion Center**. For fan control, see the [prerequisite](#-fan-support-prerequisite) below.
+
+The zip is attached to every [GitHub Release](https://github.com/onullusoy/legion-center-bazzite/releases). This plugin is not in the official Decky store, so Decky may show an "unverified plugin" notice.
+
+### Option B: build from source
+
+You also need Node.js, pnpm 8 and Python 3.
 
 ```sh
 git clone https://github.com/onullusoy/legion-center-bazzite.git
