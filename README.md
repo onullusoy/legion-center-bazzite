@@ -57,7 +57,7 @@ Other Bazzite images, kernels, firmware and Legion Go models need independent te
    https://github.com/onullusoy/legion-center-bazzite/releases/download/v0.1.1-bazzite.6/LegionCenter-0.1.1-bazzite.6.zip
    ```
 
-4. Open **Decky → Legion Center**. Fan support builds itself on first start, see [below](#-fan-support-is-set-up-automatically).
+4. Open **Decky → Legion Center**.
 
 The zip is attached to every [GitHub Release](https://github.com/onullusoy/legion-center-bazzite/releases). This plugin is not in the official Decky store, so Decky may show an "unverified plugin" notice.
 
@@ -77,16 +77,6 @@ pnpm check          # tests + type check + build
 The installer backs up any existing plugin, keeps your Decky settings and restarts Decky Loader. Open **Decky → Legion Center** in Gaming Mode afterwards.
 
 Want an archive instead of installing? Run `pnpm package` and find it in `artifacts/`.
-
-### 🌀 Fan support is set up automatically
-
-Fan control needs the [`acpi_call`](https://github.com/nix-community/acpi_call) kernel module. You don't have to install it: the plugin ships its source and, the first time it starts, builds and loads it for your running kernel (this can take up to a minute).
-
-- Only `/var` and `/etc` are touched. Bazzite's read-only system image and `rpm-ostree` are not modified.
-- A small systemd service (`legion-fan-support.service`) rebuilds the module at boot after a kernel update.
-- If something goes wrong (for example missing kernel headers or **Secure Boot** blocking the unsigned module), the plugin shows the reason. Fix it, then use **System → Repair fan support** to retry.
-- Without the module, only fan control is unavailable; lighting, charge limit and the rest keep working.
-- To remove it: `sudo systemctl disable --now legion-fan-support.service` and delete `/etc/systemd/system/legion-fan-support.service` and `/var/lib/legion-fan-support`.
 
 ## 🚀 Quick start: fan profiles
 
