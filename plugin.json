@@ -1,0 +1,15 @@
+{
+  "name": "Legion Center",
+  "author": "Bazzite community contributors",
+  "flags": [
+    "root"
+  ],
+  "api_version": 1,
+  "publish": {
+    "tags": [
+      "root"
+    ],
+    "description": "Bazzite Edition: fan profiles, power LED and charge limit for Legion Go",
+    "image": "https://opengraph.githubassets.com/1/onullusoy/legion-center-bazzite"
+  }
+}
