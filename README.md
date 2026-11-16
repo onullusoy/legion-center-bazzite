@@ -1,10 +1,10 @@
 <div align="center">
 
-<img src="assets/Icon.png" alt="Legion Center logo" width="120" />
+<img src="assets/Icon.png" alt="Legion Decky logo" width="120" />
 
-# Legion Center for Bazzite
+# Legion Decky
 
-**Fan curves, lighting, charge limit and controller tools for the Lenovo Legion Go on Bazzite.**
+**Legion Go controls for Bazzite**
 A [Decky Loader](https://decky.xyz) plugin for Gaming Mode.
 
 [![License: BSD-3-Clause](https://img.shields.io/badge/license-BSD--3--Clause-blue.svg)](LICENSE)
@@ -54,33 +54,33 @@ Other Bazzite images, kernels, firmware and Legion Go models need independent te
 3. Paste this link and confirm:
 
    ```
-   https://github.com/onullusoy/legion-center-bazzite/releases/download/v1.1.6/LegionCenter-1.1.6.zip
+   https://github.com/onullusoy/legion-decky/releases/download/v1.1.6/LegionDecky-1.1.6.zip
    ```
 
-4. Open **Decky → Legion Center**.
+4. Open **Decky → Legion Decky**.
 
-The zip is attached to every [GitHub Release](https://github.com/onullusoy/legion-center-bazzite/releases). This plugin is not in the official Decky store, so Decky may show an "unverified plugin" notice.
+The zip is attached to every [GitHub Release](https://github.com/onullusoy/legion-decky/releases). This plugin is not in the official Decky store, so Decky may show an "unverified plugin" notice.
 
 ### Option B: build from source
 
 You also need Node.js, pnpm 8 and Python 3.
 
 ```sh
-git clone https://github.com/onullusoy/legion-center-bazzite.git
-cd legion-center-bazzite
+git clone https://github.com/onullusoy/legion-decky.git
+cd legion-decky
 
 pnpm install --frozen-lockfile
 pnpm check          # tests + type check + build
 ./install.sh        # asks for admin authentication
 ```
 
-The installer backs up any existing plugin, keeps your Decky settings and restarts Decky Loader. Open **Decky → Legion Center** in Gaming Mode afterwards.
+The installer backs up any existing plugin, keeps your Decky settings and restarts Decky Loader. Open **Decky → Legion Decky** in Gaming Mode afterwards.
 
 Want an archive instead of installing? Run `pnpm package` and find it in `artifacts/`.
 
 ## 🚀 Quick start: fan profiles
 
-1. In Gaming Mode open **Decky → Legion Center → Fan control**.
+1. In Gaming Mode open **Decky → Legion Decky → Fan control**.
 2. Enable **Custom fan control**.
 3. Pick one of the three profile slots.
 4. Drag the temperature sliders. Percentages are display-only, no keyboard popups.

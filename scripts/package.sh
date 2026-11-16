@@ -7,7 +7,7 @@ artifact_dir="${1:-${repo_dir}/artifacts}"
 version="$(node -p "require('${repo_dir}/package.json').version")"
 staging_dir="$(mktemp -d)"
 plugin_dir="${staging_dir}/LegionCenter"
-artifact_path="${artifact_dir}/LegionCenter-${version}.tar.gz"
+artifact_path="${artifact_dir}/LegionDecky-${version}.tar.gz"
 
 cleanup() {
   rm -rf "${staging_dir}"

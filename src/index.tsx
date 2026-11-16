@@ -98,11 +98,11 @@ const Content: FC = memo(() => {
 const AppContainer: FC = () => <Provider store={store}><Content /></Provider>;
 export default definePlugin(() => {
   getSettings().then(settings => store.dispatch(setInitialState(settings || {})))
-    .catch(error => console.error('Legion Center: settings could not be loaded', error));
+    .catch(error => console.error('Legion Decky: settings could not be loaded', error));
   const clearListener = currentGameIdListener();
   return {
-    name:'Legion Center',
-    titleView:<div className={staticClasses.Title}>Legion Center · Bazzite</div>,
+    name:'Legion Decky',
+    titleView:<div className={staticClasses.Title}>Legion Decky</div>,
     content:<AppContainer />,
     icon:<img src={logo} style={{width:'1rem',filter:'invert(100%) sepia(0%) saturate(2%) hue-rotate(157deg) brightness(107%) contrast(101%)'}} />,
     onDismount() { clearListener(); }

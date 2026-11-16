@@ -34,3 +34,7 @@ No automatic controller-service restart, hibernation setup, TDP override, or dri
 - [Linux multicolor LED interface](https://docs.kernel.org/leds/leds-class-multicolor.html)
 - [InputPlumber documentation](https://shadowblip.github.io/InputPlumber/usage/)
 - [PowerStation](https://github.com/ShadowBlip/PowerStation)
+
+## To-do
+
+- **VERIFY — 2026-11-16: Legion Decky rename** (not committed yet). On the Legion Go, in Desktop Mode run `git clone https://github.com/onullusoy/legion-decky.git && cd legion-decky && pnpm install --frozen-lockfile && pnpm check && ./install.sh` (for an existing checkout, use `git pull --ff-only` instead of cloning). Return to Gaming Mode, open Decky → Legion Decky, and check that the menu entry and panel heading both say **Legion Decky**. Open About and confirm version **1.1.6**. Confirm previously saved fan profiles and lighting preferences are still present, and that only one copy of the plugin appears. Expected: the renamed plugin loads normally with existing settings. The internal `LegionCenter` installation directory and existing backup paths remain unchanged.

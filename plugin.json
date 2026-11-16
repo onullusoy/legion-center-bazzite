@@ -1,5 +1,5 @@
 {
-  "name": "Legion Center",
+  "name": "Legion Decky",
   "author": "Bazzite community contributors",
   "flags": [
     "root"
@@ -9,7 +9,7 @@
     "tags": [
       "root"
     ],
-    "description": "Fan profiles, power LED, charge limit and controller tools for Legion Go on Bazzite",
-    "image": "https://opengraph.githubassets.com/1/onullusoy/legion-center-bazzite"
+    "description": "Legion Go controls for Bazzite",
+    "image": "https://opengraph.githubassets.com/1/onullusoy/legion-decky"
   }
 }

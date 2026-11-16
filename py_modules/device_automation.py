@@ -443,7 +443,7 @@ class DeviceAutomation:
         try:
             self._inhibitor = await asyncio.create_subprocess_exec(
                 "systemd-inhibit", "--no-ask-password", "--what=sleep", "--mode=delay",
-                "--who=Legion Center", "--why=Record battery state at sleep entry",
+                "--who=Legion Decky", "--why=Record battery state at sleep entry",
                 "/usr/bin/python3", "-u", "-c", INHIBITOR_HELPER,
                 stdin=asyncio.subprocess.PIPE, stdout=asyncio.subprocess.PIPE,
                 stderr=asyncio.subprocess.DEVNULL, start_new_session=True,

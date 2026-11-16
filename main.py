@@ -47,7 +47,7 @@ except Exception as e:
 class Plugin:
     # Asyncio-compatible long-running code, executed in a task when the plugin is loaded
     async def _main(self):
-        decky.logger.info("Legion Center starting up")
+        decky.logger.info("Legion Decky starting up")
         self._acpi_call_busy = False
 
         await self._auto_install_fan_support()
@@ -481,7 +481,7 @@ class Plugin:
 
     # Function called first during the unload process, utilize this to handle your plugin being removed
     async def _unload(self):
-        decky.logger.info("Legion Center shutting down")
+        decky.logger.info("Legion Decky shutting down")
         task = getattr(self, '_device_automation_task', None)
         if task is not None:
             task.cancel()
