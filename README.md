@@ -99,6 +99,7 @@ The curve is always non-decreasing, with at least 87% at 70–80 °C and 100% at
 - **AC / battery fan automation:** opt-in, only reacts to power transitions or **Apply matching profile**, never turns custom fan control on by itself.
 - **Touchpad route:** experimental. It did not restore the physical touchpad in Steam Gaming Mode on the tested setup. See [Bazzite issue #5770](https://github.com/ublue-os/bazzite/issues/5770) for a possible workaround (HORIPAD Steam Controller target).
 - **Gyro / resume checks:** read-only, they never restart InputPlumber or grab input devices.
+- **Fan module:** the plugin builds and loads the `acpi_call` kernel module itself on first start and after kernel updates. If it fails (missing headers, Secure Boot), the reason is shown; retry with **System → Repair fan support**.
 - **Back buttons:** firmware remapping is not exposed; use Steam Input.
 
 ### Validated vs. still open
