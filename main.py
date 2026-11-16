@@ -1,6 +1,8 @@
 import os
 import asyncio
 import copy
+import json
+import platform
 import logging
 
 # The decky plugin module is located at decky-loader/plugin
@@ -48,6 +50,8 @@ class Plugin:
         decky.logger.info("Legion Center starting up")
         self._acpi_call_busy = False
 
+        await self._auto_install_fan_support()
+
         settings.remove_transient_status()
         saved = settings.get_settings()
         night_state = saved.get('nightMode') or {}
@@ -88,6 +92,37 @@ class Plugin:
         if night_requested and not night_result['success']:
             decky.logger.error('Saved night mode could not be verified; check its recovery status')
         self._device_automation_task = asyncio.create_task(runtime.run())
+
+    async def _auto_install_fan_support(self):
+        """Build and load acpi_call once per kernel when it is missing."""
+        if AcpiEnabler is None:
+            return
+        try:
+            if fan_capability.ensure_acpi_call_available():
+                return
+            kernel = platform.release()
+            marker = os.path.join(decky.DECKY_PLUGIN_RUNTIME_DIR, 'fan-support-attempt.json')
+            try:
+                with open(marker) as handle:
+                    if json.load(handle).get('kernel') == kernel:
+                        return  # already tried for this kernel; use Repair to retry
+            except (OSError, ValueError):
+                pass
+            decky.logger.info(f'fan support missing; installing for kernel {kernel}')
+            self._acpi_call_busy = True
+            try:
+                loop = asyncio.get_running_loop()
+                await loop.run_in_executor(None, AcpiEnabler(verbose=True).enable)
+                decky.logger.info('fan support installed')
+            except Exception as error:
+                decky.logger.error(f'automatic fan support install failed: {error}')
+                os.makedirs(decky.DECKY_PLUGIN_RUNTIME_DIR, exist_ok=True)
+                with open(marker, 'w') as handle:
+                    json.dump({'kernel': kernel, 'error': str(error)}, handle)
+            finally:
+                self._acpi_call_busy = False
+        except Exception as error:
+            decky.logger.error(f'fan support check failed: {error}')
 
     def _ensure_device_automation(self):
         runtime = getattr(self, '_device_automation', None)

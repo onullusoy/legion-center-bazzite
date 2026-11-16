@@ -54,10 +54,10 @@ Other Bazzite images, kernels, firmware and Legion Go models need independent te
 3. Paste this link and confirm:
 
    ```
-   https://github.com/onullusoy/legion-center-bazzite/releases/download/v0.1.1-bazzite.5/LegionCenter-0.1.1-bazzite.5.zip
+   https://github.com/onullusoy/legion-center-bazzite/releases/download/v0.1.1-bazzite.6/LegionCenter-0.1.1-bazzite.6.zip
    ```
 
-4. Open **Decky → Legion Center**. For fan control, see the [prerequisite](#-fan-support-prerequisite) below.
+4. Open **Decky → Legion Center**. Fan support builds itself on first start, see [below](#-fan-support-is-set-up-automatically).
 
 The zip is attached to every [GitHub Release](https://github.com/onullusoy/legion-center-bazzite/releases). This plugin is not in the official Decky store, so Decky may show an "unverified plugin" notice.
 
@@ -78,13 +78,15 @@ The installer backs up any existing plugin, keeps your Decky settings and restar
 
 Want an archive instead of installing? Run `pnpm package` and find it in `artifacts/`.
 
-### 🌀 Fan support prerequisite
+### 🌀 Fan support is set up automatically
 
-Fan control needs the [`acpi_call`](https://github.com/nix-community/acpi_call) kernel module for your **running kernel** (`/proc/acpi/call` must exist). The installer does **not** install kernel modules or disable Bazzite's filesystem protections.
+Fan control needs the [`acpi_call`](https://github.com/nix-community/acpi_call) kernel module. You don't have to install it: the plugin ships its source and, the first time it starts, builds and loads it for your running kernel (this can take up to a minute).
 
-- The upstream SteamOS fan installer (`steamos-readonly`, `pacman`) does not work on Bazzite.
-- After a kernel update the module must be rebuilt (matching headers and a compiler are required). If that isn't possible, the **System → repair** action reports a failure instead of pretending fan support is ready.
-- Secure Boot setups have not been validated yet.
+- Only `/var` and `/etc` are touched. Bazzite's read-only system image and `rpm-ostree` are not modified.
+- A small systemd service (`legion-fan-support.service`) rebuilds the module at boot after a kernel update.
+- If something goes wrong (for example missing kernel headers or **Secure Boot** blocking the unsigned module), the plugin shows the reason. Fix it, then use **System → Repair fan support** to retry.
+- Without the module, only fan control is unavailable; lighting, charge limit and the rest keep working.
+- To remove it: `sudo systemctl disable --now legion-fan-support.service` and delete `/etc/systemd/system/legion-fan-support.service` and `/var/lib/legion-fan-support`.
 
 ## 🚀 Quick start: fan profiles
 
@@ -116,7 +118,7 @@ The curve is always non-decreasing, with at least 87% at 70–80 °C and 100% at
 | Fan curve write and firmware read-back | Long gaming sessions across thermal / power conditions |
 | Switching between profiles, persistence, invalid-curve rejection | Suspend/resume for every setting |
 | Power LED changes, charge-limit state changes | Rebuilding fan support across kernel upgrades |
-| 93 automated tests | Controller layout across Steam / Decky versions |
+| 99 automated tests | Controller layout across Steam / Decky versions |
 
 The tested unit exposes no fan RPM through standard hwmon, so a successful read-back confirms the requested table, not the physical fan speed.
 
@@ -136,4 +138,4 @@ Keep changes focused, name the affected model and firmware, and include how you 
 - **nix-community/acpi_call**: the kernel module behind fan control
 - **Decky Loader, InputPlumber, Bazzite and the handheld Linux community**
 
-Released under the [BSD 3-Clause License](LICENSE) with all original copyright notices preserved. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for details. `acpi_call` is a separate GPL module and is not relicensed here.
+Released under the [BSD 3-Clause License](LICENSE) with all original copyright notices preserved. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for details. The bundled `acpi_call` module (`defaults/acpi_call/`) is a separate GPL-3.0 work with its own license and is not relicensed here.

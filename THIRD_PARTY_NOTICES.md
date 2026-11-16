@@ -70,3 +70,13 @@ Facts about a piece of hardware's own communication protocol are not
 subject to copyright; only a particular author's expression of code that
 implements them is. This project draws only on the former from the
 projects above.
+
+## Bundled kernel module source: `acpi_call`
+
+`defaults/acpi_call/` contains the unmodified source of
+[`acpi_call`](https://github.com/nix-community/acpi_call) 1.2.2
+(Copyright (c) 2010 Michal Kottman and contributors), licensed under the
+GNU General Public License v3.0 (see `defaults/acpi_call/LICENSE`).
+Legion Center builds it on the user's device for the running kernel so fan
+control works without a separate installation step. It is a separate work
+and is not relicensed under this project's BSD 3-Clause License.

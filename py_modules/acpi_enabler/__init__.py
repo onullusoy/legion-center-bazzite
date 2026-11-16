@@ -35,17 +35,37 @@
 """Package init: re-exports AcpiEnabler as the package's public API."""
 
 from pathlib import Path
-import subprocess
-if Path('/etc/systemd/system/legion-fan-support.service').exists():
+
+
+def _is_steamos():
+    try:
+        for line in Path('/etc/os-release').read_text().splitlines():
+            if line.startswith('ID=') and line[3:].strip('"\'').lower() == 'steamos':
+                return True
+    except OSError:
+        pass
+    return False
+
+
+if Path('/etc/systemd/system/legion-fan-support.service').exists() or not _is_steamos():
+    try:
+        import fan_support_installer
+    except ImportError:
+        from .. import fan_support_installer
+
     class AcpiEnabler:
+        """Bazzite and other non-SteamOS systems: build the bundled acpi_call module."""
         ACPI_CALL_CONF_PATH = Path('/etc/systemd/system/legion-fan-support.service')
+
         def __init__(self, **kwargs):
             pass
+
         def enable(self):
-            subprocess.run(['systemctl', 'restart', 'legion-fan-support.service'],
-                           check=True, timeout=180, env={'PATH': '/usr/sbin:/usr/bin'})
-            if not Path('/proc/acpi/call').exists():
-                raise RuntimeError('Fan module is unavailable; check legion-fan-support.service')
+            try:
+                fan_support_installer.install()
+            except fan_support_installer.FanSupportError as error:
+                raise RuntimeError(str(error)) from error
+
         def disable(self):
             raise RuntimeError('Use Enable Custom Fan Curves to return to firmware control')
 else:

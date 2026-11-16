@@ -1,6 +1,6 @@
 {
   "name": "legion-center",
-  "version": "0.1.1-bazzite.5",
+  "version": "0.1.1-bazzite.6",
   "description": "Bazzite Edition of Legion Center with community-developed Legion Go controls",
   "type": "module",
   "scripts": {
