@@ -1,7 +1,7 @@
 {
   "name": "legion-center",
-  "version": "0.1.1-bazzite.6",
-  "description": "Bazzite Edition of Legion Center with community-developed Legion Go controls",
+  "version": "1.1.6",
+  "description": "Fan curves, lighting, charge limit and controller tools for the Lenovo Legion Go on Bazzite",
   "type": "module",
   "scripts": {
     "build": "shx rm -rf dist && rollup -c",

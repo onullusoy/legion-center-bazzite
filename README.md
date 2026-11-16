@@ -2,7 +2,7 @@
 
 <img src="assets/Icon.png" alt="Legion Center logo" width="120" />
 
-# Legion Center — Bazzite Edition
+# Legion Center for Bazzite
 
 **Fan curves, lighting, charge limit and controller tools for the Lenovo Legion Go on Bazzite.**
 A [Decky Loader](https://decky.xyz) plugin for Gaming Mode.
@@ -54,7 +54,7 @@ Other Bazzite images, kernels, firmware and Legion Go models need independent te
 3. Paste this link and confirm:
 
    ```
-   https://github.com/onullusoy/legion-center-bazzite/releases/download/v0.1.1-bazzite.6/LegionCenter-0.1.1-bazzite.6.zip
+   https://github.com/onullusoy/legion-center-bazzite/releases/download/v1.1.6/LegionCenter-1.1.6.zip
    ```
 
 4. Open **Decky → Legion Center**.
@@ -115,7 +115,7 @@ The tested unit exposes no fan RPM through standard hwmon, so a successful read-
 
 ## 🔄 Updates
 
-This edition uses its own Bazzite version numbers (see `package.json`). The upstream reinstall/update action is hidden because it would overwrite this edition. Update by pulling the repo and running `./install.sh` again. More details in [docs/](docs/) ([automation](docs/automation.md), [roadmap](docs/roadmap.md)).
+Install the latest release zip again, or pull the repo and run `./install.sh`. More details in [docs/](docs/) ([automation](docs/automation.md), [roadmap](docs/roadmap.md)).
 
 ## 🤝 Contributing
 
