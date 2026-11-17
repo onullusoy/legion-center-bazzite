@@ -121,6 +121,12 @@ Install the latest release zip again, or pull the repo and run `./install.sh`. M
 
 Keep changes focused, name the affected model and firmware, and include how you validated it. Hardware-facing changes should verify the resulting device state and keep a recoverable previous configuration. Please remove usernames, home paths and serial numbers from any logs you share.
 
+## 💬 Device compatibility feedback
+
+Trying this plugin on a **Legion Go 2** or another handheld? We'd appreciate your feedback on how well it integrates with your device, including what works and what doesn't. Please [open an issue](https://github.com/onullusoy/legion-decky/issues) with your device model, OS, Decky Loader and plugin versions, and the features you tested. Reports of successful use are welcome too! Please remove personal information and device serial numbers from any logs or screenshots you share.
+
+Compatibility with these devices has not yet been verified.
+
 ## 💜 Credits & license
 
 - **InnoVision Games**: the original Legion Center project
