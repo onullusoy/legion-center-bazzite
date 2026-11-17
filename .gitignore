@@ -7,3 +7,17 @@ __pycache__/
 .env
 .env.*
 .DS_Store
+
+# Local agent and working files (kept private)
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+CODEX.md
+TODO.md
+.agents/
+.claude/
+.codex/
+.cursor/
+.cursorrules
+.windsurfrules
+.github/copilot-instructions.md
